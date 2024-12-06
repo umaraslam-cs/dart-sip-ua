@@ -1187,6 +1187,7 @@ class RTCSession extends EventManager implements Owner {
     _setLocalMediaStatus();
 
     if (options['useUpdate'] != null) {
+      logger.d('_sendUpdate()');
       _sendUpdate(<String, dynamic>{
         'sdpOffer': true,
         'eventHandlers': handlers,
@@ -1611,6 +1612,7 @@ class RTCSession extends EventManager implements Owner {
           'optional': <dynamic>[],
         };
     offerConstraints['mandatory']['IceRestart'] = true;
+    offerConstraints['useUpdate'] = true;
     renegotiate(options: offerConstraints);
   }
 
